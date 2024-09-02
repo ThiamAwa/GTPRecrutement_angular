@@ -1,0 +1,21 @@
+.container-fluid {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  min-width: 60px; /* Minimum width for the sidebar */
+  max-width: 250px; /* Optional maximum width */
+  height: 100vh; /* Full height */
+  background-color: #f8f9fa; /* Light background color */
+  position: fixed; /* Fixed position */
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* Scrollable content */
+}
+
+.main-content {
+  margin-left: 60px; /* Match this with the sidebar min-width */
+  width: calc(100% - 60px); /* Adjust width based on sidebar */
+  padding: 20px; /* Optional padding */
+}
