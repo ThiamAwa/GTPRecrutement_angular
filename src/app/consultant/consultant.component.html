@@ -140,7 +140,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title text-center">Liste des Candidats</h4>
+                  <h4 class="card-title">Liste des Consultans</h4>
                   <div class="table-responsive">
                     <table class="table table-striped">
                       <thead>
@@ -149,33 +149,30 @@
                           <th>Nom</th>
                           <th>Prénom</th>
                           <th>Email</th>
-                          <th>Date de Candidature</th>
-                          <th>CV</th>
-                          <th>Lettre de Motivation</th>
+                          <th>Date de Disponibilité</th>
+                          <th>Compétences</th>
+                          <th>Expériences</th>
                           <th>Status</th>
-
+                          <th>CV</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let candidat of tabCandidat">
-                          <td>{{ candidat.id }}</td>
-                          <td>{{ candidat.nom }}</td>
-                          <td>{{ candidat.prenom }}</td>
-                          <td>{{ candidat.email }}</td>
-                          <td>{{ candidat.date_de_candidature | date }}</td>
+                        <tr *ngFor="let consultant of tabConsultant"> <!-- Utilisation de *ngFor pour lister les consultants -->
+                          <td>{{ consultant.id }}</td>
+                          <td>{{ consultant.nom }}</td>
+                          <td>{{ consultant.prenom }}</td>
+                          <td>{{ consultant.email }}</td>
+                          <td>{{ consultant.date_disponibilite | date }}</td>
+                          <td>{{ consultant.competences }}</td>
+                          <td>{{ consultant.experiences }}</td>
+                          <td>{{ consultant.status }}</td>
                           <td>
-                            <a [href]="candidat.cv" target="_blank" class="nav-link" >Voir CV</a>
-                          </td>
-                          <td>
-                            <a [href]="candidat.lm" target="_blank" class="nav-link">Voir Lettre de Motivation</a>
-                          </td>
-                          <td>
-                              <button class="btn btn-sm btn-success">Accepter</button>
-                              <button class="btn btn-sm btn-danger">Refuser</button>
+                            <a [href]="consultant.cv" target="_blank">Voir CV</a>
                           </td>
                         </tr>
                       </tbody>
                     </table>
+
 
                   </div>
                 </div>
@@ -194,21 +191,14 @@
     </div>
 
   </div>
-  <!-- container-scroller -->
-  <script src="assets/vendors/base/vendor.bundle.base.js"></script>
 
-   <script src="assets/js1/off-canvas.js"></script>
-   <script src="assets/js1/hoverable-collapse.js"></script>
-   <script src="assets/js1/template.js"></script>
 
-   <script src="assets/vendors/chart.js/Chart.min.js"></script>
-   <script src="assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
 
-   <script src="assets/js1/dashboard.js"></script>
 
 </body>
 
 </html>
+
 
 
 

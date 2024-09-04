@@ -8,13 +8,23 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagerComponent } from './manager/manager.component';
 import { HttpClientModule } from '@angular/common/http';
+import { StatistiqueComponent } from './statistique/statistique.component';
+import { ConsultantComponent } from './consultant/consultant.component';
+import { OffreComponent } from './offre/offre.component';
+import { PostulerComponent } from './postuler/postuler.component';
+import { SuiviMissionsComponent } from './suivi-missions/suivi-missions.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     DashboardComponent,
-    ManagerComponent
+    ManagerComponent,
+    StatistiqueComponent,
+    ConsultantComponent,
+    OffreComponent,
+    PostulerComponent,
+    SuiviMissionsComponent
   ],
   imports: [
     BrowserModule,

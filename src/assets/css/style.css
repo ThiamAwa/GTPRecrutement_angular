@@ -146,6 +146,11 @@
 
 
 /*** Navbar ***/
+.p1{
+  z-index: 1000;
+  position: fixed;
+
+}
 .navbar-light .navbar-nav .nav-link {
     font-family: 'Roboto', sans-serif;
     position: relative;
@@ -516,10 +521,15 @@ a.text-primary:hover {
 
 
 /*** Service Start ***/
+.d-inline-block{
+  color: #085C78;
+
+}
 .service .service-item {
-    background: #063b4e;
+    background: #fff;
     border-radius: 10px;
     transition: 0.5s;
+    color: #085C78;
 }
 
 .service .service-item:hover {
