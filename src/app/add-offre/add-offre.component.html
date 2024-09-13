@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouvelle Offre</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+
+    <!-- Main Content Start -->
+    <div class="container-fluid px-1 py-3 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 mb-4">
+
+                <h1 class="fw-bold mb-3 text-center" style="color:#ffc107;">Nouvelle Offre</h1>
+                <div class="card form-card mb-2">
+                    <h5 class="text-center mb-4">Opportunités de carrière : Chef de projet Infrastructure (H/F) (511997)</h5>
+                    <form class="form-card " (ngSubmit)="submitForm()">
+                        <div class="row justify-content-between text-left">
+                            <!-- Titre de l'offre -->
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label px-3">Titre de l'offre<span class="text-danger"> *</span></label>
+                                <input type="text" id="titre" name="titre" [(ngModel)]="offre.titre" class="form-control" required>
+                            </div>
+                            <!-- Lieu -->
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label px-3">Lieu<span class="text-danger"> *</span></label>
+                                <input type="text" id="lieu" name="lieu" [(ngModel)]="offre.lieu" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <!-- Description -->
+                            <div class="form-group col-12">
+                                <label class="form-control-label px-3">Description<span class="text-danger"> *</span></label>
+                                <textarea id="description" name="description" [(ngModel)]="offre.description" class="form-control" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <!-- Compétences -->
+                            <div class="form-group col-12">
+                                <label class="form-control-label px-3">Compétences<span class="text-danger"> *</span></label>
+                                <textarea id="competences" name="competences" [(ngModel)]="offre.competences" class="form-control" required></textarea>
+                            </div>
+                        </div>
+                        <div class="row justify-content-between text-left">
+                            <!-- Expérience -->
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label px-3">Expérience (en années)<span class="text-danger"> *</span></label>
+                                <input type="number" id="experience" name="experience" [(ngModel)]="offre.experience" class="form-control" required>
+                            </div>
+                            <!-- Type de Contrat -->
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label px-3">Type de Contrat<span class="text-danger"> *</span></label>
+                                <input type="text" id="type_contrat" name="type_contrat" [(ngModel)]="offre.type_contrat" class="form-control" required>
+                            </div>
+                            <!-- Date de Début -->
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label px-3">Date de Début<span class="text-danger"> *</span></label>
+                                <input type="date" id="date_debut" name="date_debut" [(ngModel)]="offre.date_debut" class="form-control" required>
+                            </div>
+                            <!-- Client -->
+                            <div class="form-group col-sm-6">
+                                <label class="form-control-label px-3">Client<span class="text-danger"> *</span></label>
+                                <select id="client" name="client" [(ngModel)]="offre.client_id" class="form-control" required>
+                                    <option *ngFor="let client of clients" [value]="client.id">{{ client.user.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row justify-content-end">
+                            <div class="form-group col-sm-6">
+                                <button type="submit" class="btn btn-primary btn-block">Postuler</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content End -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

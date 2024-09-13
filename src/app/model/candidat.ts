@@ -9,7 +9,13 @@ export class Candidat {
     statut_evaluation!: string;
     date_de_naissance!: string;
     lm!:string;
-    cv!: string; 
+    cv!: string;
+    experience!:string;
+    competences!:string;
+    offre?: {
+      id: number;
+      titre: string;
+    };
 
 
 }

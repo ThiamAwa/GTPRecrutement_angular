@@ -94,7 +94,9 @@
           <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center mb-4">
               <h1 class="fw-bold mb-4">Votre Candidature</h1>
               <div class="card mb-4">
-                  <h5 class="text-center mb-4 opportunite">Opportunités de carrière : Chef de projet Infrastructure (H/F) (511997)</h5>
+                <h5 class="text-center mb-4 opportunite">Opportunités de carrière : {{ offreTitle }}</h5>
+
+
                   <form (submit)="onSubmit()" class="form-card">
                     <div class="row justify-content-between text-left">
                       <!-- Prénom -->
@@ -120,7 +122,7 @@
                         <input type="text" [(ngModel)]="candidat.adresse" id="adresse" name="adresse" placeholder="Entrez votre adresse" required>
                       </div>
                     </div>
-                  
+
                     <div class="row justify-content-between text-left">
                       <!-- Date de naissance -->
                       <div class="form-group col-sm-6 flex-column d-flex">
@@ -134,6 +136,22 @@
                       </div>
                     </div>
                     <div class="row justify-content-between text-left">
+                      <!-- Compétences -->
+                      <div class="form-group col-12 flex-column d-flex">
+                        <label class="form-control-label px-3">Compétences<span class="text-danger"> *</span></label>
+                        <input type="text" [(ngModel)]="candidat.competences" id="competences" name="competences" placeholder="Entrez vos compétences" required>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
+                      <!-- Expériences -->
+                      <div class="form-group col-12 flex-column d-flex">
+                        <label class="form-control-label px-3">Expériences professionnelles<span class="text-danger"> *</span></label>
+                        <textarea [(ngModel)]="candidat.experience" id="experience" name="experience" rows="4" placeholder="Décrivez vos expériences professionnelles" required></textarea>
+                      </div>
+                    </div>
+
+                    <div class="row justify-content-between text-left">
                       <!-- Téléversement CV -->
                       <div class="form-group col-12 flex-column d-flex">
                         <label class="form-control-label px-3">Joindre votre CV<span class="text-danger"> *</span></label>
@@ -143,7 +161,7 @@
                         </div>
                       </div>
                     </div>
-                  
+
                     <div class="row justify-content-between text-left">
                       <!-- Téléversement Lettre de Motivation -->
                       <div class="form-group col-12 flex-column d-flex">
@@ -160,9 +178,9 @@
                       </div>
                     </div>
                   </form>
-                  
-                
-                
+
+
+
               </div>
           </div>
       </div>

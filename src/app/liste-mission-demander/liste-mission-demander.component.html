@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="container-fluid page-body-wrapper">
+  <app-sidebar></app-sidebar>
+  <!-- partial -->
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-center">Liste des Demande</h4>
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Titre</th>
+                      <th>Description</th>
+                      <th>Date de Début</th>
+                      <th>Date de Fin</th>
+                      <th>Client</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let mission of missions">
+                      <td>{{ mission.id }}</td>
+                      <td>{{ mission.titre }}</td>
+                      <td>{{ mission.description }}</td>
+                      <td>{{ mission.date_debut | date }}</td>
+                      <td>{{ mission.date_fin | date }}</td>
+                      <td>{{ mission.client_id.user.name }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

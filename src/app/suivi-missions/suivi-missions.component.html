@@ -1,46 +1,11 @@
-<div class="container">
-  <h2>Ajouter une Mission</h2>
-  <form (submit)="onSubmit()">
-    <div class="form-group">
-      <label for="titre">Titre</label>
-      <input type="text" id="titre" [(ngModel)]="mission.titre" name="titre" required>
-    </div>
+<div *ngIf="isLoading">Chargement des missions en cours...</div>
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
-    <div class="form-group">
-      <label for="description">Description</label>
-      <textarea id="description" [(ngModel)]="mission.description" name="description" required></textarea>
-    </div>
+<ul *ngIf="!isLoading && missions.length">
+  <li *ngFor="let mission of missions">
+    {{ mission.name }} - Statut : {{ mission.status }}
+    <button (click)="updateStatus(mission.id, 'COMPLETED')">Marquer comme terminée</button>
+  </li>
+</ul>
 
-    <div class="form-group">
-      <label for="date_debut">Date de Début</label>
-      <input type="date" id="date_debut" [(ngModel)]="mission.date_debut" name="date_debut" required>
-    </div>
-
-    <div class="form-group">
-      <label for="date_fin">Date de Fin</label>
-      <input type="date" id="date_fin" [(ngModel)]="mission.date_fin" name="date_fin">
-    </div>
-
-    <div class="form-group">
-      <label for="status">Status</label>
-      <select id="status" [(ngModel)]="mission.status" name="status" required>
-        <option value="en_attente">En attente</option>
-        <option value="en_cours">En cours</option>
-        <option value="terminée">Terminée</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="consultant_id">Consultant</label>
-      <input type="number" id="consultant_id" [(ngModel)]="mission.consultant_id" name="consultant_id" required>
-    </div>
-
-    <div class="form-group">
-      <label for="client_id">Client</label>
-      <input type="number" id="client_id" [(ngModel)]="mission.client_id" name="client_id" required>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-  </form>
-</div>
-
+<div *ngIf="!isLoading && missions.length === 0">Aucune mission en cours.</div>

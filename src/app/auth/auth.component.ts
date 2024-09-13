@@ -14,19 +14,37 @@ export class AuthComponent {
 
   constructor(private authService: AuthServiceService, private router: Router) { }
 
-  onSubmit(loginForm:any): void {
+  onSubmit(loginForm: any): void {
     this.authService.login({ email: this.email, password: this.password })
-    .subscribe({
-      next: (response) => {
-        console.log('Connexion réussie', response);
-        this.router.navigate(['/manager']);
-        loginForm.reset();
-      },
-      error: (err) => {
-        console.error('Erreur lors de la connexion:', err);
-        // Gérer l'erreur de connexion
-      }
-    });
+      .subscribe({
+        next: (response: any) => {
+          console.log('Connexion réussie', response);
 
+          // Stocker le token dans le localStorage
+          localStorage.setItem('auth_token', response.token);
+
+          // Stocker l'ID du client dans le localStorage
+          if (response.user && response.user.id) {
+            localStorage.setItem('clientId', response.user.id.toString());
+          }
+
+          // Rediriger l'utilisateur en fonction du rôle
+          const role = response.user.role_id;
+          if (role === 1) {
+            this.router.navigate(['/manager']);
+          } else if (role === 2) {
+            this.router.navigate(['/client']);
+          } else {
+            this.router.navigate(['/consultant']);
+          }
+
+          // Réinitialiser le formulaire
+          loginForm.reset();
+        },
+        error: (err) => {
+          console.error('Erreur lors de la connexion:', err);
+          this.errorMessage = 'Invalid email or password'; // Ajustez le message d'erreur si nécessaire
+        }
+      });
   }
 }

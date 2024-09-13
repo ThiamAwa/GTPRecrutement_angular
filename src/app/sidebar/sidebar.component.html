@@ -1,0 +1,94 @@
+
+  <!-- partial:partials/_sidebar.html -->
+  <nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <div class="user-profile">
+      <div class="user-image">
+        <img [src]="face1">
+      </div>
+      <div class="user-name">
+          Moussa Diouf
+      </div>
+      <div class="user-designation">
+          Developer
+      </div>
+    </div>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html" [routerLink]="['/statistique']">
+          <i class="icon-box menu-icon"></i>
+          <span class="menu-title">Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" [routerLink]="['/manager']" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <i class="icon-disc menu-icon"></i>
+          <span class="menu-title">Liste des Candidats</span>
+          <i class="menu-arrow"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" [routerLink]="['/consultant']">
+          <i class="icon-file menu-icon"></i>
+          <span class="menu-title">Liste des Consultants</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" [routerLink]="['/offre']">
+          <i class="icon-file menu-icon"></i>
+          <span class="menu-title">listes des Offres</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="" [routerLink]="['/listeMissionDemander']">
+          <i class="icon-command menu-icon"></i>
+          <span class="menu-title">Liste des Demandes</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="" [routerLink]="['/mission']">
+          <i class="icon-command menu-icon"></i>
+          <span class="menu-title">Gestion des Missions</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="" [routerLink]="['/missionActuelle']">
+          <i class="icon-help menu-icon"></i>
+          <span class="menu-title">Liste des Missions Actuelles</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">User Pages</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="auth">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
+            <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="docs/documentation.html">
+          <i class="icon-book menu-icon"></i>
+          <span class="menu-title">Documentation</span>
+        </a>
+      </li>
+    </ul>
+    <!-- Bouton de déconnexion -->
+    <div class="logout-section">
+      <a class="nav-link logout-link" href="logout.html">
+        <i class="fas fa-sign-out-alt menu-icon"></i>
+        <span class="menu-title">logout</span>
+      </a>
+    </div>
+  </nav>
+
+
+

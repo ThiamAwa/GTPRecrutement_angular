@@ -34,4 +34,10 @@ export class ConsultantComponent {
   )
   }
 
+  // deleteConsultant(id: number): void {
+  //   this.consultantService.deleteConsultant(id).subscribe(() => {
+  //     this.consultantService= this.consultantService.filter(c => c.id !== id);
+  //   });
+  // }
+
 }

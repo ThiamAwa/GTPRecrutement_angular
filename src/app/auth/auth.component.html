@@ -14,10 +14,11 @@
         </div>
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-                <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>Register</small></a>
-                <a href="#" [routerLink]="['/login']"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Login</small></a>
+                <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>S'inscrire</small></a>
+                <a href="#" [routerLink]="['/login']"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Connecter</small></a>
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i> My Dashboard</small></a>
+                          <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i>Mon Tableau de Bord</small></a>
+                          <!-- <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i> </small></a> -->
                     <div class="dropdown-menu rounded">
                         <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i> My Profile</a>
                         <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i> Inbox</a>
@@ -34,64 +35,65 @@
 
   <!-- Navbar & Hero Start -->
   <div class="container-fluid position-relative p-0">
-      <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
-          <a href="" class="navbar-brand p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
             <h1 class="text-primary"><img src="assets/img/logo.png" alt="Logo"></h1>
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-              <span class="fa fa-bars"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-              <div class="navbar-nav ms-auto py-0">
-                  <a href="index.html" class="nav-item nav-link">Home</a>
-                  <a href="about.html" class="nav-item nav-link active">About</a>
-                  <a href="service.html" class="nav-item nav-link">Services</a>
-                  <a href="blog.html" class="nav-item nav-link">Blogs</a>
-                  <div class="nav-item dropdown">
-                      <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                          <span class="dropdown-toggle">Pages</span>
-                      </a>
-                      <div class="dropdown-menu m-0">
-                          <a href="feature.html" class="dropdown-item">Our Features</a>
-                          <a href="team.html" class="dropdown-item">Our team</a>
-                          <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                          <a href="offer.html" class="dropdown-item">Our offer</a>
-                          <a href="FAQ.html" class="dropdown-item">FAQs</a>
-                          <a href="404.html" class="dropdown-item">404 Page</a>
-                      </div>
-                  </div>
-                  <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-              </div>
-              <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Get Started</a>
-          </div>
-      </nav>
+            <!-- <img src="logo.png" alt="Logo"> -->
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                <a href="" [routerLink]="['/dashboard']" class="nav-item nav-link active">ACCUEIL</a>
+                <a href="about.html" class="nav-item nav-link">OFFRES</a>
+                <a href="service.html" class="nav-item nav-link">ENTREPRISES</a>
+                <a href="blog.html" class="nav-item nav-link">BLOG</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link" data-bs-toggle="dropdown">
+                        <span class="dropdown-toggle">SERVICES</span>
+                    </a>
+                    <div class="dropdown-menu m-0">
+                        <a href="feature.html" class="dropdown-item">Recrutement IT</a>
+                        <a href="team.html" class="dropdown-item">Missions de consulting</a>
+                        <a href="testimonial.html" class="dropdown-item">Développement de projets IT sur mesure</a>
+                        <a href="offer.html" class="dropdown-item">Recherche et Développement</a>
+                        <a href="FAQ.html" class="dropdown-item">Formation et Renforcement des Compétences</a>
+                        <a href="404.html" class="dropdown-item">Gestion de la Pénurie de Talents</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Commencer</a>
+        </div>
+    </nav>
 
-      <!-- Header Start -->
-      <div class="container-fluid login">
+    <!-- En-tête Début -->
+    <div class="container-fluid login">
         <div class="container text-center py-5" style="max-width: 900px;">
-          <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s" style="margin-top: 50px;">Login</h4>
+            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s" style="margin-top: 50px;">Connexion</h4>
 
             <form class="bg-light p-4 rounded shadow wow fadeInDown" data-wow-delay="0.3s" (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
                 <div class="form-group mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter your email" [(ngModel)]="email" required>
+                    <label for="email" class="form-label">Adresse e-mail</label>
+                    <input type="email" class="form-control" name="email" placeholder="Entrez votre adresse e-mail" [(ngModel)]="email" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Enter your password" [(ngModel)]="password" required>
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" name="password" placeholder="Entrez votre mot de passe" [(ngModel)]="password" required>
                 </div>
                 <div class="form-group form-check mb-3">
                     <input type="checkbox" class="form-check-input" id="remember">
-                    <label class="form-check-label" for="remember">Remember me</label>
+                    <label class="form-check-label" for="remember">Se souvenir de moi</label>
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-                <p class="mt-3">Don't have an account? <a href="#" class="text-primary">Register here</a></p>
+                <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                <p class="mt-3">Vous n'avez pas de compte ? <a href="#" class="text-primary">Inscrivez-vous ici</a></p>
             </form>
         </div>
     </div>
+    <!-- En-tête Fin -->
+</div>
 
-      <!-- Header End -->
-  </div>
   <!-- Navbar & Hero End -->
 
 

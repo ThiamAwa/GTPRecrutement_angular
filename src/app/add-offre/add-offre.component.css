@@ -1,0 +1,105 @@
+body {
+  color: #000;
+  overflow-x: hidden;
+  height: 100%;
+  /* background-image: url("../../assets/img/") */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-color: #f8f9fa;
+}
+
+.card {
+  padding: 30px 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  border: 2px solid #00BCD4; /* Couleur de la bordure de la carte */
+  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.2);
+}
+
+.blue-text {
+  color: #00BCD4;
+}
+
+.form-control-label {
+  margin-bottom: 0;
+}
+
+input, textarea {
+  padding: 8px 15px;
+  border-radius: 5px !important;
+  margin: 5px 0px;
+  box-sizing: border-box;
+  border: 2px solid #00BCD4; /* Couleur de la bordure */
+  font-size: 18px !important;
+  font-weight: 300;
+}
+
+input:focus, textarea:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 2px solid #085C78; /* Couleur de la bordure au focus */
+  outline-width: 0;
+  font-weight: 400;
+}
+
+.btn-block {
+  text-transform: uppercase;
+  font-size: 15px !important;
+  font-weight: 400;
+  height: 43px;
+  cursor: pointer;
+  border: 2px solid #ffc107;;
+}
+
+.btn-block:hover {
+  color: #fff !important;
+  border-color: #085C78;
+  background-color: #085C78;
+}
+
+button:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  outline-width: 0;
+}
+
+.opportunite {
+  color: #085C78;
+}
+
+
+        .header {
+            background-color: #085C78;
+            padding: 10px;
+            color: white;
+        }
+        .header img {
+            width: 150px;
+        }
+        .form-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-card h5 {
+            color: #085C78;
+            font-weight: bold;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #085C78;
+            border-color: #085C78;
+        }
+        .btn-primary:hover {
+            background-color: #064b5a;
+            border-color: #064b5a;
+        }
+        .container-fluid {
+            padding: 0 15px;
+        }
+
