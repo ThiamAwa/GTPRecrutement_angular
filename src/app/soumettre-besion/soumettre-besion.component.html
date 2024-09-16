@@ -90,23 +90,17 @@
               <!-- <i class="menu-arrow"></i> -->
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="" [routerLink]="['/consultant']"> -->
-              <!-- <i class="icon-file menu-icon"></i> -->
-              <!-- <span class="menu-title">Suivi des Missions </span>
-            </a>
-          </li> -->
-
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-              <!-- <i class="icon-command menu-icon"></i> -->
+            <a class="nav-link" href="" [routerLink]="['/consultant']">
+              <!-- <i class="icon-file menu-icon"></i> -->
               <span class="menu-title">Suivi des Missions </span>
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="pages/icons/feather-icons.html">
               <!-- <i class="icon-help menu-icon"></i> -->
-              <span class="menu-title">Évaluation et Validation :</span>
+              <span class="menu-title">Évaluation et Validation</span>
             </a>
           </li>
           <li class="nav-item">
@@ -115,30 +109,15 @@
               <span class="menu-title">Gestion des Documents </span>
               <!-- <i class="menu-arrow"></i> -->
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="docs/documentation.html">
-              <!-- <i class="icon-book menu-icon"></i> -->
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <div class="logout">
-              <a class="nav-link logout-link" href="">
+            <div class="">
+              <a class="nav-link logout-link" href="logout.html">
                 <i class="fas fa-sign-out-alt menu-icon"></i>
                 <span class="menu-title">Deconnexion</span>
-    
               </a>
             </div>
+
           </li>
         </ul>
 
@@ -151,38 +130,98 @@
               <div class="card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="text-center" style="color: #085C78 ;">Soumettre un besions pour une missions</h4>
+                    <h4 class="text-center" style="color: #085C78 ;">Soumettre une mission</h4>
 
-                    <form (ngSubmit)="onSubmit()" [formGroup]="missionForm" class="forms-sample">
-                      <div class="form-row">
+                    <form [formGroup]="missionForm" (ngSubmit)="onSubmit()">
+                      <div class="row">
+                        <!-- Title Field -->
                         <div class="form-group col-md-6">
-                          <label for="titre" class="form-label">Title</label>
-                          <input type="text" id="titre" class="form-control" formControlName="titre" placeholder="Mission Title">
+                          <label for="titre">Titre</label>
+                          <input type="text" formControlName="titre" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['titre'].errors}" />
+                          <div *ngIf="submitted && f['titre'].errors" class="invalid-feedback">
+                            <div *ngIf="f['titre'].errors?.['required']">Le titre est requis.</div>
+                          </div>
+                        </div>
+
+                        <!-- Description Field -->
+                        <div class="form-group col-md-6">
+                          <label for="description">Description</label>
+                          <textarea formControlName="description" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['description'].errors}"></textarea>
+                          <div *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+                            <div *ngIf="f['description'].errors?.['required']">La description est requise.</div>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <label for="description" class="form-label">Description</label>
-                        <textarea id="description" class="form-control" formControlName="description" placeholder="Mission Description"></textarea>
+                      <div class="row">
+                        <!-- Start Date Field -->
+                        <div class="form-group col-md-6">
+                          <label for="date_debut">Date de début</label>
+                          <input type="date" formControlName="date_debut" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['date_debut'].errors}" />
+                          <div *ngIf="submitted && f['date_debut'].errors" class="invalid-feedback">
+                            <div *ngIf="f['date_debut'].errors?.['required']">La date de début est requise.</div>
+                          </div>
+                        </div>
+
+                        <!-- End Date Field -->
+                        <div class="form-group col-md-6">
+                          <label for="date_fin">Date de fin</label>
+                          <input type="date" formControlName="date_fin" class="form-control input-border" />
+                        </div>
                       </div>
 
-                      <div class="form-row">
+                      <div class="row">
+                        <!-- Profile Type Field -->
                         <div class="form-group col-md-6">
-                          <label for="date_debut" class="form-label">Start Date</label>
-                          <input type="date" id="date_debut" class="form-control" formControlName="date_debut">
+                          <label for="type_profil_recherche">Type de profil recherché</label>
+                          <input type="text" formControlName="type_profil_recherche" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['type_profil_recherche'].errors}" />
+                          <div *ngIf="submitted && f['type_profil_recherche'].errors" class="invalid-feedback">
+                            <div *ngIf="f['type_profil_recherche'].errors?.['required']">Le type de profil est requis.</div>
+                          </div>
                         </div>
+
+                        <!-- Required Skills Field -->
                         <div class="form-group col-md-6">
-                          <label for="date_fin" class="form-label">End Date</label>
-                          <input type="date" id="date_fin" class="form-control" formControlName="date_fin">
+                          <label for="competences_requises">Compétences requises</label>
+                          <input type="text" formControlName="competences_requises" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['competences_requises'].errors}" />
+                          <div *ngIf="submitted && f['competences_requises'].errors" class="invalid-feedback">
+                            <div *ngIf="f['competences_requises'].errors?.['required']">Les compétences requises sont obligatoires.</div>
+                          </div>
                         </div>
                       </div>
 
-                      <div class="form-group">
-                        <button type="submit" class="btn mr-2" style="background-color: #ffc107; color: aliceblue">Soumettre</button>
-                        <!-- <button type="button" class="btn btn-light" (click)="onCancel()">Cancel</button> -->
+                      <div class="row">
+                        <!-- Experience Level Field -->
+                        <div class="form-group col-md-6">
+                          <label for="niveau_experience">Niveau d'expérience</label>
+                          <input type="text" formControlName="niveau_experience" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['niveau_experience'].errors}" />
+                          <div *ngIf="submitted && f['niveau_experience'].errors" class="invalid-feedback">
+                            <div *ngIf="f['niveau_experience'].errors?.['required']">Le niveau d'expérience est requis.</div>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="objectifs">Objectifs</label>
+                          <textarea formControlName="objectifs" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['objectifs'].errors}"></textarea>
+                          <div *ngIf="submitted && f['objectifs'].errors" class="invalid-feedback">
+                            <div *ngIf="f['objectifs'].errors?.['required']">Les objectifs sont requis.</div>
+                          </div>
+                        </div>
+
+                        <!-- Duration Field -->
+                        <div class="form-group col-md-6">
+                          <!-- <label for="duree">Durée (en mois)</label> -->
+                          <input type="hidden" formControlName="duree" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['duree']?.errors}" />
+
+
+                        </div>
+
+                        <!-- Objectives Field -->
+
                       </div>
+
+                      <!-- Submit Button -->
+                      <button type="submit" class="btn" style="background-color: #ffc107; color: aliceblue;">Soumettre</button>
                     </form>
-
 
 
 

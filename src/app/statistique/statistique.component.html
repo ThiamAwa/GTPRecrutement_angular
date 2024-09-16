@@ -1,6 +1,6 @@
 <!-- mission-statistics.component.html -->
 
-<div class="statistics-cards">
+<!-- <div class="statistics-cards">
   <div class="card">
     <h3>Missions en attente</h3>
     <p>{{ statistics.en_attente }}</p>
@@ -13,5 +13,198 @@
     <h3>Missions terminées</h3>
     <p>{{ statistics.terminee }}</p>
   </div>
-</div>
+</div> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>GTPRecrutement</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo" href="index.html">
+          <img src="assets/img/logo.png" alt="logo" width="500" height="500"/>
+      </a>
+
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/img/logo.png" alt="logo"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" placeholder="Search Projects.." aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+
+          <li class="nav-item dropdown d-flex mr-4 ">
+            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-cog"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
+              <a class="dropdown-item preview-item">
+                  <i class="icon-head"></i> Profile
+              </a>
+              <a class="dropdown-item preview-item">
+                  <i class="icon-inbox"></i> Logout
+              </a>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <div class="user-profile">
+          <div class="user-image">
+            <img src="assets/img/face1.jpg">
+          </div>
+          <div class="user-name">
+              Amadou Fall
+          </div>
+          <div class="user-designation">
+              Developer
+          </div>
+        </div>
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html" [routerLink]="['/statistique']">
+              <!-- <i class="icon-box menu-icon"></i> -->
+              <span class="menu-title">Acceuil</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" [routerLink]="['/manager']" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <!-- <i class="icon-disc menu-icon"></i> -->
+              <span class="menu-title">Liste des Candidats</span>
+              <!-- <i class="menu-arrow"></i> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" [routerLink]="['/consultant']">
+              <!-- <i class="icon-file menu-icon"></i> -->
+              <span class="menu-title">Liste des Consultants</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="pages/tables/basic-table.html">
+              <!-- <i class="icon-command menu-icon"></i> -->
+              <span class="menu-title">Suivi des Missions </span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="pages/icons/feather-icons.html">
+              <!-- <i class="icon-help menu-icon"></i> -->
+              <span class="menu-title">Gestion des Contrats</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="docs/documentation.html">
+              <!-- <i class="icon-book menu-icon"></i> -->
+              <span class="menu-title">Documentation</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <div class="">
+              <a class="nav-link logout-link" href="logout.html">
+                <i class="fas fa-sign-out-alt menu-icon"></i>
+                <span class="menu-title">Deconnexion</span>
+              </a>
+            </div>
+
+          </li>
+        </ul>
+        <!-- Bouton de déconnexion -->
+
+      </nav>
+      <!-- partial -->
+
+      <div class="main-content offset-1">
+        <section class="section">
+          <h1 class="section-header text-center" style="color: #085C78 ;">Tableau de bord</h1>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+              <div class="card bg-primary text-white">
+                <div class="card-body d-flex align-items-center">
+                  <i class="ion ion-person card-icon"></i>
+                  <div class="ml-3">
+                    <h4>Missions en Cours</h4>
+                    <h5 style="color: aliceblue;">{{missionsEnCours }}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+              <div class="card bg-danger text-white">
+                <div class="card-body d-flex align-items-center">
+                  <i class="ion ion-ios-paper-outline card-icon"></i>
+                  <div class="ml-3">
+                    <h4>Mission en Attente</h4>
+                    <h5 style="color: aliceblue;">{{ missionEnAttente }}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-12 mb-4">
+              <div class="card bg-warning text-dark">
+                <div class="card-body d-flex align-items-center">
+                  <i class="ion ion-paper-airplane card-icon"></i>
+                  <div class="ml-3">
+                    <h4>Missions Terminées</h4>
+                    <h5 style="color: aliceblue;">{{ missionsTerminees }}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <div class="chart-container">
+          <canvas  id="MyChart" >{{ chart }}</canvas>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+  </div>
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
 

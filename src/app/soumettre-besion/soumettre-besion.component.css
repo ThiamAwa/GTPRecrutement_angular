@@ -22865,6 +22865,19 @@ dl li {
   border-color: #085C78 ; /* Couleur de la bordure, modifiez selon vos besoins */
 }
 
+.input-border {
+  border: 1px solid #085C78 !important;
+}
+label{
+  color:  #085C78 !important;
+
+}
+
+.input-border.is-invalid {
+  border-color: #dc3545 !important; /* Optionally, change the border color for invalid fields */
+}
+
+
 
 }
 

@@ -1,0 +1,9 @@
+<!-- banner-notification.component.html -->
+<div *ngIf="notifications.length > 0" class="notification-banner">
+  <div *ngFor="let notification of notifications" class="notification-item">
+    <strong>{{ notification.title }}</strong>
+    <p>{{ notification.message }}</p>
+    <a [routerLink]="['/missions', notification.missionId]" class="notification-link">Voir les détails</a>
+  </div>
+</div>
+

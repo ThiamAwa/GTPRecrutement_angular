@@ -73,15 +73,15 @@
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link" href="index.html" [routerLink]="['/client']">
-              <i class="icon-box menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <!-- <i class="icon-box menu-icon"></i> -->
+              <span class="menu-title">Acceuil</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" [routerLink]="['/ConsulteMission']" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <!-- <i class="icon-disc menu-icon"></i> -->
               <span class="menu-title">Consulter les Missions</span>
-              <i class="menu-arrow"></i>
+              <!-- <i class="menu-arrow"></i> -->
             </a>
           </li>
           <li class="nav-item">
@@ -92,50 +92,33 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-              <!-- <i class="icon-command menu-icon"></i> -->
-              <span class="menu-title">Suivi des Missions </span>
-            </a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="pages/icons/feather-icons.html">
               <!-- <i class="icon-help menu-icon"></i> -->
-              <span class="menu-title">Évaluation et Validation :</span>
+              <span class="menu-title">Évaluation et Validation</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <!-- <i class="icon-head menu-icon"></i> -->
               <span class="menu-title">Gestion des Documents </span>
-              <i class="menu-arrow"></i>
+              <!-- <i class="menu-arrow"></i> -->
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="docs/documentation.html">
-              <!-- <i class="icon-book menu-icon"></i> -->
-              <span class="menu-title">Documentation</span>
-            </a>
+            <div class="">
+              <a class="nav-link logout-link" href="logout.html">
+                <i class="fas fa-sign-out-alt menu-icon"></i>
+                <span class="menu-title">Deconnexion</span>
+              </a>
+            </div>
+
           </li>
         </ul>
-        <!-- Bouton de déconnexion -->
-        <div class="logout-section">
-          <a class="nav-link logout-link" href="logout.html">
-            <i class="fas fa-sign-out-alt menu-icon"></i>
-            <span class="menu-title">logout</span>
-          </a>
-        </div>
+
       </nav>
       <!-- partial -->
-      <div class="main-content offset-2">
+
+      <div class="main-content offset-1">
         <section class="section">
           <h1 class="section-header text-center" style="color: #085C78 ;">Dashboard</h1>
           <div class="row">
@@ -172,10 +155,14 @@
                 </div>
               </div>
             </div>
-                             
+
           </div>
         </section>
+        <div class="chart-container">
+          <canvas  id="MyChart" >{{ chart }}</canvas>
+        </div>
       </div>
+
 
 
 

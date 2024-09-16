@@ -30,7 +30,7 @@
                   <i class="icon-search"></i>
                 </span>
               </div>
-              <input type="text" class="form-control" placeholder="Rechercher" aria-label="search" aria-describedby="search">
+              <input type="text" class="form-control" placeholder="Search Projects.." aria-label="search" aria-describedby="search">
             </div>
           </li>
         </ul>
@@ -45,8 +45,9 @@
               <a class="dropdown-item preview-item">
                   <i class="icon-head"></i> Profile
               </a>
-            <button class="btn btn-warning mb-3" [routerLink]="['/soumettreBesion']">Logout</button>
-              
+              <a class="dropdown-item preview-item">
+                  <i class="icon-inbox"></i> Logout
+              </a>
             </div>
           </li>
 
@@ -82,23 +83,17 @@
               <!-- <i class="menu-arrow"></i> -->
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="" [routerLink]="['/consultant']"> -->
-              <!-- <i class="icon-file menu-icon"></i> -->
-              <!-- <span class="menu-title">Suivi des Missions </span>
-            </a>
-          </li> -->
-
           <li class="nav-item">
-            <a class="nav-link" href="pages/tables/basic-table.html">
-              <!-- <i class="icon-command menu-icon"></i> -->
+            <a class="nav-link" href="" [routerLink]="['/consultant']">
+              <!-- <i class="icon-file menu-icon"></i> -->
               <span class="menu-title">Suivi des Missions </span>
             </a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="pages/icons/feather-icons.html">
               <!-- <i class="icon-help menu-icon"></i> -->
-              <span class="menu-title">Évaluation et Validation :</span>
+              <span class="menu-title">Évaluation et Validation</span>
             </a>
           </li>
           <li class="nav-item">
@@ -107,34 +102,18 @@
               <span class="menu-title">Gestion des Documents </span>
               <!-- <i class="menu-arrow"></i> -->
             </a>
-            <div class="collapse" id="auth">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/login-2.html"> Login 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/register-2.html"> Register 2 </a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/samples/lock-screen.html"> Lockscreen </a></li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="docs/documentation.html">
-              <!-- <i class="icon-book menu-icon"></i> -->
-              <span class="menu-title">Documentation</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <div class="logout">
-              <a class="nav-link logout-link" href="">
+            <div class="">
+              <a class="nav-link logout-link" href="logout.html">
                 <i class="fas fa-sign-out-alt menu-icon"></i>
                 <span class="menu-title">Deconnexion</span>
-    
               </a>
             </div>
+
           </li>
         </ul>
-        <!-- Bouton de déconnexion -->
-       
+
       </nav>
       <!-- partial -->
       <div class="main-panel">
@@ -155,7 +134,7 @@
                           <option value="">All</option>
                           <option value="en_cours">En cours</option>
                           <option value="terminee">Terminee</option>
-                          
+
                         </select>
                       </div>
 
@@ -206,7 +185,7 @@
           </div>
         </div>
 
-      </div>  
+      </div>
 
 
     </div>

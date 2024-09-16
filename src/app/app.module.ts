@@ -25,6 +25,8 @@ import { ConsulteMissionComponent } from './consulte-mission/consulte-mission.co
 import { SoumettreBesionComponent } from './soumettre-besion/soumettre-besion.component';
 import { ListeMissionDemanderComponent } from './liste-mission-demander/liste-mission-demander.component';
 import { AttribuermissionComponent } from './attribuermission/attribuermission.component';
+import { InscrireComponent } from './inscrire/inscrire.component';
+import { BannerNotificationComponent } from './banner-notification/banner-notification.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { AttribuermissionComponent } from './attribuermission/attribuermission.c
     ConsulteMissionComponent,
     SoumettreBesionComponent,
     ListeMissionDemanderComponent,
-    AttribuermissionComponent
+    AttribuermissionComponent,
+    InscrireComponent,
+    BannerNotificationComponent
   ],
   imports: [
     BrowserModule,

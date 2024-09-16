@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class MissionServiceService {
   private apiUrl2='http://localhost:8000/api/missions/sans-consultant';
   private clientId: number = 2;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+    private authService:AuthServiceService,
+  ) {
    // Récupérer le clientId lors de l'initialisation du service
   }
 
@@ -66,8 +69,13 @@ export class MissionServiceService {
   }
 
   // Soumet un besoin
-  soumettreBesion(mission: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/soumettreBesion`, mission).pipe(catchError(this.handleError));
+  soumettreBesion(mission: any,token:string): Observable<any> {
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<any>(`${this.apiUrl}/soumettreBesion`, mission,{ headers }).pipe(catchError(this.handleError));
   }
 
   // Récupère l'ID du client depuis le localStorage
@@ -92,6 +100,7 @@ export class MissionServiceService {
         return throwError(() => new Error('Une erreur est survenue. Veuillez réessayer plus tard.'));
       })
     );
-  
+
   }
+
 }
