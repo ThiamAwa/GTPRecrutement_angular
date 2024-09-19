@@ -1,0 +1,8 @@
+<div *ngIf="selectedMission">
+  <h5>Détails de la Mission</h5>
+  <p><strong>Titre:</strong> {{ selectedMission.title }}</p>
+  <p><strong>Description:</strong> {{ selectedMission.description }}</p>
+  <p><strong>Statut:</strong> {{ selectedMission.status }}</p>
+  <p><strong>Niveau d'expérience:</strong> {{ selectedMission.niveau_experience }}</p>
+  <p><strong>Date de soumission:</strong> {{ selectedMission.submissionDate | date }}</p>
+</div>

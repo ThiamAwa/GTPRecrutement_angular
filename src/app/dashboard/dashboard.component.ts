@@ -45,6 +45,6 @@ export class DashboardComponent implements OnInit {
 
   // Trigger when filters change
   onFilterChange(): void {
-    this.getFilteredOffres(); // Fetch offers again with updated filters
+    this.getFilteredOffres(); 
   }
 }

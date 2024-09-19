@@ -17,6 +17,8 @@ import { ConsulteMissionComponent } from './consulte-mission/consulte-mission.co
 import { SoumettreBesionComponent } from './soumettre-besion/soumettre-besion.component';
 import { ListeMissionDemanderComponent } from './liste-mission-demander/liste-mission-demander.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
+import { BannerNotificationComponent } from './banner-notification/banner-notification.component';
+import { DetailMissionComponent } from './detail-mission/detail-mission.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -39,9 +41,11 @@ const routes: Routes = [
   {path : 'soumettreBesion',component:SoumettreBesionComponent},
   { path: 'listeMissionDemander', component: ListeMissionDemanderComponent },
   { path: 'inscrire', component: InscrireComponent },
+  {path:'notification',component:BannerNotificationComponent},
+  {path :'detailMission',component:DetailMissionComponent}
 
 
-  
+
 
 
 

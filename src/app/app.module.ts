@@ -27,6 +27,14 @@ import { ListeMissionDemanderComponent } from './liste-mission-demander/liste-mi
 import { AttribuermissionComponent } from './attribuermission/attribuermission.component';
 import { InscrireComponent } from './inscrire/inscrire.component';
 import { BannerNotificationComponent } from './banner-notification/banner-notification.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
+import { NotificationBottomSheetComponent } from './notification-bottom-sheet/notification-bottom-sheet.component';
+import { DetailMissionComponent } from './detail-mission/detail-mission.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -51,17 +59,25 @@ import { BannerNotificationComponent } from './banner-notification/banner-notifi
     ListeMissionDemanderComponent,
     AttribuermissionComponent,
     InscrireComponent,
-    BannerNotificationComponent
+    
+    BannerNotificationComponent,
+         NotificationBottomSheetComponent,
+         DetailMissionComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatBottomSheetModule,
+    MatListModule,
 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NotificationBottomSheetComponent],
 })
 export class AppModule { }

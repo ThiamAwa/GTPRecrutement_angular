@@ -1,4 +1,9 @@
 
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 export interface Mission {
   id: number;
   titre: string;
@@ -9,6 +14,12 @@ export interface Mission {
   consultant_id: number;
   client_id: number;
   consultantName?: string; // Ajout des propriétés optionnelles
-  clientName?: string;
+  client: Client;
+}
+export interface Client {
+  id: number;
+  user_id: number;
+  adresse: string;
+  user: User;
 }
 

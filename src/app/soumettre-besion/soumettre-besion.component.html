@@ -210,7 +210,8 @@
                         <!-- Duration Field -->
                         <div class="form-group col-md-6">
                           <!-- <label for="duree">Durée (en mois)</label> -->
-                          <input type="hidden" formControlName="duree" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['duree']?.errors}" />
+                          <input type="hidden" formControlName="duree" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['duree'].errors}" />
+
 
 
                         </div>

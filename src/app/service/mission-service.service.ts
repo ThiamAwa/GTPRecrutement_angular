@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthServiceService } from './auth-service.service';
@@ -9,13 +9,12 @@ import { AuthServiceService } from './auth-service.service';
 })
 export class MissionServiceService {
   private apiUrl = 'http://localhost:8000/api/missions';
-  private apiUrl2='http://localhost:8000/api/missions/sans-consultant';
+  private apiUrl2 = 'http://localhost:8000/api/missions/sans-consultant';
+
   private clientId: number = 2;
 
-  constructor(private http: HttpClient,
-    private authService:AuthServiceService,
-  ) {
-   // Récupérer le clientId lors de l'initialisation du service
+  constructor(private http: HttpClient, private authService: AuthServiceService) {
+    // Récupérer le clientId lors de l'initialisation du service
   }
 
   // Récupère toutes les missions
@@ -69,13 +68,12 @@ export class MissionServiceService {
   }
 
   // Soumet un besoin
-  soumettreBesion(mission: any,token:string): Observable<any> {
-
+  soumettreBesion(mission: any, token: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-    return this.http.post<any>(`${this.apiUrl}/soumettreBesion`, mission,{ headers }).pipe(catchError(this.handleError));
+    return this.http.post<any>(`${this.apiUrl}/soumettreBesion`, mission, { headers }).pipe(catchError(this.handleError));
   }
 
   // Récupère l'ID du client depuis le localStorage
@@ -89,10 +87,8 @@ export class MissionServiceService {
     console.error('Une erreur est survenue:', error);
     return throwError(() => new Error('Une erreur est survenue. Veuillez réessayer plus tard.'));
   }
-  // getMissionsOverview(): Observable<any> {
-  //   return this.http.get(`${this.apiUrl}/missions/overview`);
-  // }
 
+  // Récupère les missions sans consultant
   getMissionsSansConsultant(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl2).pipe(
       catchError(error => {
@@ -100,7 +96,10 @@ export class MissionServiceService {
         return throwError(() => new Error('Une erreur est survenue. Veuillez réessayer plus tard.'));
       })
     );
-
   }
 
+  // Assigner un consultant à une mission
+  assignConsultantToMission(data: { consultantId: number; missionId: number }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/assign`, data).pipe(catchError(this.handleError));
+  }
 }

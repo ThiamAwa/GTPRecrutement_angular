@@ -60,6 +60,8 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
 @-moz-keyframes flash {
   0% {
     opacity: 1;
@@ -82,7 +84,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 150px; 
+  max-width: 150px;
   display: inline-block;
   vertical-align: top;
 }
@@ -16186,11 +16188,11 @@ button.bg-dark:focus {
 }
 
 .fixed-top {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1030;
+
 }
 
 .fixed-bottom {
@@ -22852,6 +22854,14 @@ dl li {
   .sidebar-icon-only .main-panel {
     width: calc(100% - 70px);
   }
+  .modal-backdrop {
+    opacity: 0.5 !important;
+  }
+
+  
+
+
+
 }
 
 /*# sourceMappingURL=maps/style.css.map */

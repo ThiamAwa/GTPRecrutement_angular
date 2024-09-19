@@ -1,8 +1,10 @@
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 export class Consultant {
   id?: number; // L'ID est facultatif si vous ne l'utilisez pas encore
-  nom!: string;
-  prenom!: string;
-  email!: string;
   adresse!: string;
   competences!: string;
   experiences!: string;
@@ -15,4 +17,5 @@ export class Consultant {
   date_de_naissance!: string;
   missions_attribuees!: string;
   cv!: string;
+  user!:User;
 }

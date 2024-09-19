@@ -102,7 +102,7 @@
               <span class="menu-title">Gestion des Contrats</span>
             </a>
           </li>
-         
+
           <li class="nav-item">
             <a class="nav-link" href="docs/documentation.html">
               <!-- <i class="icon-book menu-icon"></i> -->
@@ -120,7 +120,7 @@
           </li>
         </ul>
         <!-- Bouton de déconnexion -->
-        
+
       </nav>
       <!-- partial -->
       <div class="main-panel">
@@ -160,8 +160,8 @@
                             <td>
                               <!-- <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_attente'" (click)="updateMissionStatus(mission.id, 'en_cours')">Démarrer Mission</button>
                               <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_cours'" (click)="updateMissionStatus(mission.id, 'terminee')">Terminer Missions</button> -->
-                              <button class="btn btn-sm" style="background-color: #ffc107; color:#f8f9fa" *ngIf="mission.status === 'en_attente'" (click)="updateMissionStatus(mission.id, 'en_cours')">Valider</button>
-                              <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_cours'" (click)="updateMissionStatus(mission.id, 'terminee')">Attribuer</button>
+                              <button class="btn btn-sm" style="background-color: #ffc107; color:#f8f9fa" *ngIf="mission.status === 'en_attente'" (click)="updateMissionStatus(mission.id, 'en_attente')">Valider</button>
+                              <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_cours'" (click)="updateMissionStatus(mission.id, 'en_cours')">Attribuer</button>
                             </td>
 
                         </tr>

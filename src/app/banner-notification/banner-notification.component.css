@@ -1,28 +1,50 @@
-/* banner-notification.component.css */
-.notification-banner {
+/* src/app/components/mission-notification/mission-notification.component.css */
+.notification-container {
   position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+.notification-header {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border-bottom: 1px solid #ddd;
+  border-radius: 5px 5px 0 0;
+}
+
+.notification-list {
+  padding: 10px;
 }
 
 .notification-item {
-  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
-.notification-link {
-  color: #0056b3;
-  text-decoration: underline;
-  cursor: pointer;
+.notification-item:last-child {
+  border-bottom: none;
 }
 
-.notification-link:hover {
-  text-decoration: none;
+.notification-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
+
+.notification-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+}
+
+.notification-list {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+

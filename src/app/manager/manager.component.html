@@ -3,11 +3,11 @@
   <app-sidebar></app-sidebar> -->
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
-    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <nav class="navbar col-lg-12 col-12 p-0 d-flex flex-row" style="position: relative;">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <a class="navbar-brand brand-logo" href="index.html">
           <img [src]="namelogo" alt="logo" width="500" height="500"/>
-      </a>
+        </a>
 
         <a class="navbar-brand brand-logo-mini" href="index.html"><img [src]="namelogo" alt="logo"/></a>
       </div>
@@ -25,30 +25,96 @@
               </div>
               <input type="text" class="form-control" placeholder="Rechercher.." aria-label="search" aria-describedby="search">
             </div>
+
           </li>
         </ul>
-        <ul class="navbar-nav navbar-nav-right">
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <!-- Button to open the notification modal with a badge for unread notifications -->
+            <button type="button" class="btn position-relative" data-bs-toggle="modal" data-bs-target="#notificationModal" style="background-color: #085C78; color: aliceblue;">
+              Ouvrir les notifications
+              <span *ngIf="unreadNotificationsCount > 0" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {{ unreadNotificationsCount }}
+                <span class="visually-hidden">Unread notifications</span>
+              </span>
+            </button>
 
-          <li class="nav-item dropdown d-flex mr-4 ">
-            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-cog"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Settings</p>
-              <a class="dropdown-item preview-item">
-                  <i class="icon-head"></i> Profile
-              </a>
-              <a class="dropdown-item preview-item">
-                  <i class="icon-inbox"></i> Logout
-              </a>
+            <!-- Notification Modal -->
+            <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header" style="background-color: #ffc107;color:aliceblue">
+                    <h5 class="modal-title text-center" id="notificationModalLabel">Nouvelle Mission</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- Notification List -->
+                    <div *ngIf="notifications.length > 0" class="notification-list">
+                      <div *ngFor="let notification of notifications; let i = index" class="notification-item">
+                        <h6>Nouvelle mission reçue :{{ notification.titre }}</h6>
+                        <p>{{ notification.clientName }} a soumis un nouvelle mission</p>
+                        <!-- Button to view mission details -->
+                        <button class="btn" (click)="showDetails(i)" data-bs-toggle="modal" data-bs-target="#missionDetailModal" style="background-color: #085C78;color:aliceblue">
+                          Voir les détails
+                        </button>
+                      </div>
+                    </div>
+                    <!-- Selected Mission Details -->
+                    <!-- <div *ngIf="selectedMission">
+                      <h5>Détails de la Mission</h5>
+                      <p><strong>Titre:</strong> {{ selectedMission.title }}</p>
+                      <p><strong>Description:</strong> {{ selectedMission.description }}</p>
+                    </div> -->
+
+                    <!-- No Notifications -->
+                    <div *ngIf="notifications.length === 0">
+                      <p>Aucune nouvelle notification</p>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </li>
-
         </ul>
+        <div class="modal fade" id="missionDetailModal" tabindex="-1" aria-labelledby="missionDetailModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="missionDetailModalLabel">Détails de la mission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Display selected mission details -->
+                <div *ngIf="selectedMission">
+                  <p><strong>Titre:</strong> {{ selectedMission.titre }}</p>
+                  <p><strong>Description:</strong> {{ selectedMission.description }}</p>
+                  <p><strong>Statut:</strong> {{ selectedMission.status }}</p>
+                  <p><strong>Niveau d'expérience:</strong> {{ selectedMission.niveau_experience }}</p>
+                  <p><strong>Date de début:</strong> {{ selectedMission.date_debut | date }}</p>
+                  <p><strong>Date de fin:</strong> {{ selectedMission.date_fin | date }}</p>
+                  <p><strong>Type de profil recherché:</strong> {{ selectedMission.type_profil_recherche }}</p>
+                  <p><strong>Compétences requises:</strong> {{ selectedMission.competences_requises }}</p>
+                  <p><strong>Durée:</strong> {{ selectedMission.duree }}</p>
+                  <p><strong>Objectifs:</strong> {{ selectedMission.objectifs }}</p>
+                  <p><strong>Client:</strong> {{ selectedMission.client?.name }}</p>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #ffc107;color:aliceblue" [routerLink]="['/consultant']">Valider</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
 
       </div>
     </nav>
-    <div class="container-fluid page-body-wrapper">
+    <div class="container-fluid page-body-wrapper mb-5">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <div class="user-profile">
@@ -116,6 +182,7 @@
 
       </nav>
   <!-- partial -->
+
   <div class="main-panel">
     <div class="content-wrapper">
       <div class="row">

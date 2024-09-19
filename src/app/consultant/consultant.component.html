@@ -122,6 +122,7 @@
         <!-- Bouton de déconnexion -->
 
       </nav>
+
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -129,41 +130,115 @@
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Liste des Consultans</h4>
+                  <h4 class="card-title fw-bold text-center mb-5" style="color: #085C78;">LISTES DES CONSULTANTS</h4>
+                  <div class="mb-4">
+                    <div class="row">
+                      <!-- Competence Filter -->
+                      <div class="col-md-3 mb-3">
+                        <label for="competences" class="form-label">Compétence</label>
+                        <input id="competences" type="text" class="form-control" [(ngModel)]="filters.competences" (ngModelChange)="onFilterChange()"placeholder="Filtrer par compétence">
+                      </div>
+
+                      <!-- Experience Filter -->
+                      <div class="col-md-3 mb-3">
+                        <label for="experienceFilter" class="form-label">Niveau d'expérience</label>
+                        <input id="experienceFilter" type="text" class="form-control" [(ngModel)]="filters.experiences" (ngModelChange)="onFilterChange()" placeholder="Filtrer par expérience (années)">
+                      </div>
+
+                      <!-- Disponibilité Filter -->
+                      <div class="col-md-3 mb-3">
+                        <label for="disponibilite" class="form-label">Disponibilité</label>
+                        <input id="disponibilite" type="date" class="form-control" [(ngModel)]="filters.date_disponibilite" (ngModelChange)="onFilterChange()" placeholder="Filtrer par disponibilité">
+                      </div>
+
+                      <!-- Bouton Filtrer -->
+                      <div class="col-md-3 mb-3 align-self-end">
+                        <button class="btn" style="background-color: #085C78;color:aliceblue" (click)="getFilteredConsultant()">Filtrer</button>
+                      </div>
+                    </div>
+
+                  </div>
                   <div class="table-responsive">
                     <table class="table table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Nom</th>
-                          <th>Prénom</th>
+                          <th>Name</th>
                           <th>Email</th>
-                          <th>Date de Disponibilité</th>
+                          <th>Disponibilité</th>
                           <th>Compétences</th>
-                          <th>Expériences</th>
-                          <th>Status</th>
+                          <th>Niveau Expériences</th>
                           <th>CV</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr *ngFor="let consultant of tabConsultant"> <!-- Utilisation de *ngFor pour lister les consultants -->
+                        <tr *ngFor="let consultant of tabConsultant">
                           <td>{{ consultant.id }}</td>
-                          <td>{{ consultant.nom }}</td>
-                          <td>{{ consultant.prenom }}</td>
-                          <td>{{ consultant.email }}</td>
+                          <td>{{ consultant.user.name }}</td>
+                          <td>{{ consultant.user.email }}</td>
                           <td>{{ consultant.date_disponibilite | date }}</td>
                           <td>{{ consultant.competences }}</td>
                           <td>{{ consultant.experiences }}</td>
-                          <td>{{ consultant.status }}</td>
                           <td>
                             <a [href]="consultant.cv" target="_blank">Voir CV</a>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm" style="background-color: #085C78; color: aliceblue" (click)="openModal(consultant.id!)">
+                              Attribuer à une mission
+                            </button>
                           </td>
                         </tr>
                       </tbody>
                     </table>
-
-
                   </div>
+
+                  <!-- Mission Modal -->
+                  <!-- Modale personnalisée -->
+                  <!-- Modal pour l'attribution de mission -->
+                  <div class="modal" [ngClass]="{'show': isModalOpen}" tabindex="-1" role="dialog" [style.display]="isModalOpen ? 'block' : 'none'">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Attribuer une mission au Consultant ID: {{ selectedConsultantId }}</h5>
+                          <button type="button" style="background-color: #ffc107;" class="close" (click)="closeModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th>Sélection</th>
+                                <th>Titre de la Mission</th>
+                                <th>Description</th>
+                                <!-- <th>Date de début</th>
+                                <th>Date de fin</th> -->
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let mission of missionList">
+                                <td>
+                                  <input type="radio" name="mission" [value]="mission.id" [(ngModel)]="selectedMission">
+                                </td>
+                                <td>{{ mission.titre }}</td>
+                                <td>{{ mission.description }}</td>
+                                <!-- <td>{{ mission.date_debut | date }}</td>
+                                <td>{{ mission.date_fin | date }}</td> -->
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" (click)="closeModal()">Fermer</button>
+                          <button type="button" class="btn btn-primary" >Attribuer</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
                 </div>
               </div>
 
