@@ -9,6 +9,8 @@ import { Offre } from '../model/offre';
 export class OffreServiceService {
   private apiUrl = 'http://localhost:8000/api/offre';
   private apiUrlFiltrage = 'http://localhost:8000/api/offres/filtrage';
+  private apiUrlMission = 'http://localhost:8000/api/publier/offre';
+  missions = [];
 
   constructor(private httpClient: HttpClient) { }
 
@@ -53,5 +55,13 @@ export class OffreServiceService {
     }
 
     return this.httpClient.get<Offre[]>(this.apiUrlFiltrage, { params });
+  }
+
+
+
+
+
+  publierOffre(missionId: number): Observable<any> {
+    return this.httpClient.post(this.apiUrlMission, { mission_id: missionId });
   }
 }

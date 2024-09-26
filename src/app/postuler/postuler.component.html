@@ -97,87 +97,95 @@
                 <h5 class="text-center mb-4 opportunite">Opportunités de carrière : {{ offreTitle }}</h5>
 
 
-                  <form (submit)="onSubmit()" class="form-card">
-                    <div class="row justify-content-between text-left">
-                      <!-- Prénom -->
-                      <div class="form-group col-sm-6 flex-column d-flex">
-                        <label class="form-control-label px-3">Prénom<span class="text-danger"> *</span></label>
-                        <input type="text" [(ngModel)]="candidat.prenom" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
-                      </div>
-                      <!-- Nom -->
-                      <div class="form-group col-sm-6 flex-column d-flex">
-                        <label class="form-control-label px-3">Nom<span class="text-danger"> *</span></label>
-                        <input type="text" [(ngModel)]="candidat.nom" id="nom" name="nom" placeholder="Entrez votre nom" required>
-                      </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                      <!-- E-mail -->
-                      <div class="form-group col-sm-6 flex-column d-flex">
-                        <label class="form-control-label px-3">E-mail<span class="text-danger"> *</span></label>
-                        <input type="email" [(ngModel)]="candidat.email" id="email" name="email" placeholder="Entrez votre e-mail" required>
-                      </div>
-                      <!-- Adresse -->
-                      <div class="form-group col-sm-6 flex-column d-flex">
-                        <label class="form-control-label px-3">Adresse<span class="text-danger"> *</span></label>
-                        <input type="text" [(ngModel)]="candidat.adresse" id="adresse" name="adresse" placeholder="Entrez votre adresse" required>
-                      </div>
+                <form (submit)="onSubmit()" class="form-card">
+                  <div class="row justify-content-between text-left">
+                    <!-- Prénom -->
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                      <label class="form-control-label px-3">Prénom<span class="text-danger"> *</span></label>
+                      <input type="text" id="prenom" name="prenom" class="form-control" [value]="user.prenom" disabled>
                     </div>
 
-                    <div class="row justify-content-between text-left">
-                      <!-- Date de naissance -->
-                      <div class="form-group col-sm-6 flex-column d-flex">
-                        <label class="form-control-label px-3">Date de naissance<span class="text-danger"> *</span></label>
-                        <input type="date" [(ngModel)]="candidat.date_de_naissance" id="date_de_naissance" name="date_de_naissance" required>
-                      </div>
-                      <!-- telephone -->
-                      <div class="form-group col-sm-6 flex-column d-flex">
-                        <label class="form-control-label px-3">Numéro de téléphone<span class="text-danger"> *</span></label>
-                        <input type="text" [(ngModel)]="candidat.telephone" id="telephone" name="telephone" required>
-                      </div>
+                    <!-- Nom -->
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                      <label class="form-control-label px-3">Nom<span class="text-danger"> *</span></label>
+                      <input type="text" id="nom" name="nom" class="form-control" [value]="user.nom" disabled>
                     </div>
-                    <div class="row justify-content-between text-left">
-                      <!-- Compétences -->
-                      <div class="form-group col-12 flex-column d-flex">
-                        <label class="form-control-label px-3">Compétences<span class="text-danger"> *</span></label>
-                        <input type="text" [(ngModel)]="candidat.competences" id="competences" name="competences" placeholder="Entrez vos compétences" required>
-                      </div>
+                  </div>
+
+                  <div class="row justify-content-between text-left">
+                    <!-- E-mail -->
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                      <label class="form-control-label px-3">E-mail<span class="text-danger"> *</span></label>
+                      <input type="email" id="email" name="email" class="form-control" [value]="user.email" disabled>
                     </div>
 
-                    <div class="row justify-content-between text-left">
-                      <!-- Expériences -->
-                      <div class="form-group col-12 flex-column d-flex">
-                        <label class="form-control-label px-3">Expériences professionnelles<span class="text-danger"> *</span></label>
-                        <textarea [(ngModel)]="candidat.experience" id="experience" name="experience" rows="4" placeholder="Décrivez vos expériences professionnelles" required></textarea>
-                      </div>
+                    <!-- Adresse -->
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                      <label class="form-control-label px-3">Adresse<span class="text-danger"> *</span></label>
+                      <input type="text" [(ngModel)]="candidat.adresse" id="adresse" name="adresse" placeholder="Entrez votre adresse" required>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-between text-left">
+                    <!-- Date de naissance -->
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                      <label class="form-control-label px-3">Date de naissance<span class="text-danger"> *</span></label>
+                      <input type="date" [(ngModel)]="candidat.date_de_naissance" id="date_de_naissance" name="date_de_naissance" required>
                     </div>
 
-                    <div class="row justify-content-between text-left">
-                      <!-- Téléversement CV -->
-                      <div class="form-group col-12 flex-column d-flex">
-                        <label class="form-control-label px-3">Joindre votre CV<span class="text-danger"> *</span></label>
-                        <div class="custom-file mb-3">
-                          <input type="file" class="custom-file-input" (change)="onFileChange($event, 'cv')" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
-                          <label class="custom-file-label" for="cv">Choisir un fichier</label>
-                        </div>
-                      </div>
+                    <!-- Téléphone -->
+                    <div class="form-group col-sm-6 flex-column d-flex">
+                      <label class="form-control-label px-3">Numéro de téléphone<span class="text-danger"> *</span></label>
+                      <input type="text" [(ngModel)]="candidat.telephone" id="telephone" name="telephone" placeholder="Entrez votre numéro de téléphone" required>
                     </div>
+                  </div>
 
-                    <div class="row justify-content-between text-left">
-                      <!-- Téléversement Lettre de Motivation -->
-                      <div class="form-group col-12 flex-column d-flex">
-                        <label class="form-control-label px-3">Joindre votre Lettre de Motivation<span class="text-danger"> *</span></label>
-                        <div class="custom-file mb-3">
-                          <input type="file" class="custom-file-input" (change)="onFileChange($event, 'lm')" id="lm" name="lm" accept=".pdf,.doc,.docx" required>
-                          <label class="custom-file-label" for="lm">Choisir un fichier</label>
-                        </div>
+                  <div class="row justify-content-between text-left">
+                    <!-- Compétences -->
+                    <div class="form-group col-12 flex-column d-flex">
+                      <label class="form-control-label px-3">Compétences<span class="text-danger"> *</span></label>
+                      <input type="text" [(ngModel)]="candidat.competences" id="competences" name="competences" placeholder="Entrez vos compétences" required>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-between text-left">
+                    <!-- Expériences professionnelles -->
+                    <div class="form-group col-12 flex-column d-flex">
+                      <label class="form-control-label px-3">Expériences professionnelles<span class="text-danger"> *</span></label>
+                      <textarea [(ngModel)]="candidat.experience" id="experience" name="experience" rows="4" placeholder="Décrivez vos expériences professionnelles" required></textarea>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-between text-left">
+                    <!-- Téléversement CV -->
+                    <div class="form-group col-12 flex-column d-flex">
+                      <label class="form-control-label px-3">Joindre votre CV<span class="text-danger"> *</span></label>
+                      <div class="custom-file mb-3">
+                        <input type="file" class="custom-file-input" (change)="onFileChange($event, 'cv')" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+                        <label class="custom-file-label" for="cv">{{ selectedFiles.cv ? selectedFiles.cv.name : 'Choisir un fichier' }}</label>
                       </div>
                     </div>
-                    <div class="row justify-content-end">
-                      <div class="form-group col-sm-6">
-                        <button type="submit" class="btn btn-primary btn-block">Postuler</button>
+                  </div>
+
+                  <div class="row justify-content-between text-left">
+                    <!-- Téléversement Lettre de Motivation -->
+                    <div class="form-group col-12 flex-column d-flex">
+                      <label class="form-control-label px-3">Joindre votre Lettre de Motivation<span class="text-danger"> *</span></label>
+                      <div class="custom-file mb-3">
+                        <input type="file" class="custom-file-input" (change)="onFileChange($event, 'lm')" id="lm" name="lm" accept=".pdf,.doc,.docx" required>
+                        <label class="custom-file-label" for="lm">{{ selectedFiles.lm ? selectedFiles.lm.name : 'Choisir un fichier' }}</label>
                       </div>
                     </div>
-                  </form>
+                  </div>
+
+                  <div class="row justify-content-end">
+                    <div class="form-group col-sm-6">
+                      <button type="submit" class="btn btn-primary btn-block">Postuler</button>
+                    </div>
+                  </div>
+                </form>
+
+
 
 
 

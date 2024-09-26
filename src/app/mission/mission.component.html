@@ -160,9 +160,20 @@
                             <td>
                               <!-- <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_attente'" (click)="updateMissionStatus(mission.id, 'en_cours')">Démarrer Mission</button>
                               <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_cours'" (click)="updateMissionStatus(mission.id, 'terminee')">Terminer Missions</button> -->
-                              <button class="btn btn-sm" style="background-color: #ffc107; color:#f8f9fa" *ngIf="mission.status === 'en_attente'" (click)="updateMissionStatus(mission.id, 'en_attente')">Valider</button>
-                              <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_cours'" (click)="updateMissionStatus(mission.id, 'en_cours')">Attribuer</button>
+                              <!-- (click)="updateMissionStatus(mission.id, 'en_attente')" -->
+                              <!-- *ngIf="mission.status === 'en_attente'" -->
+
+                              <td>
+                                <button class="btn btn-sm" style="background-color: #ffc107; color:#f8f9fa" [routerLink]="['/consultant']">Voir les consultants</button>
+                                <button class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa" *ngIf="mission.status === 'en_cours'" (click)="updateMissionStatus(mission.id, 'en_cours')">Attribuer</button>
+                                <button *ngIf="!offerPublished[mission.id]" (click)="publier(mission.id)" class="btn btn-sm" style="background-color: #085C78; color:#f8f9fa">Publier</button>
+  
+                                <div *ngIf="offerPublished[mission.id]"  >
+                                  <p></p>
+                                </div>
                             </td>
+
+                            
 
                         </tr>
                       </tbody>

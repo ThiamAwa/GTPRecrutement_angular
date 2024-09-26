@@ -37,14 +37,14 @@ export class ConsultantServiceService {
     return this.httpClient.delete(`${this.apiUrl}/${id}`);
   }
 
- getFilteredConsultans(filters: any): Observable<Consultant[]> {
+ getFilteredConsultants(filters: any): Observable<Consultant[]> {
   let params = new HttpParams();
 
   if (filters.competences) {
     params = params.set('competences', filters.competences);
   }
   if (filters.experience) {
-    params = params.set('experiences', filters.experience);
+    params = params.set('experience', filters.experience);
   }
   if (filters.date_disponibilite) {
     // Ensure the date is in the correct format

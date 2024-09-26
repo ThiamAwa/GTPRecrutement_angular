@@ -19,6 +19,8 @@ import { ListeMissionDemanderComponent } from './liste-mission-demander/liste-mi
 import { InscrireComponent } from './inscrire/inscrire.component';
 import { BannerNotificationComponent } from './banner-notification/banner-notification.component';
 import { DetailMissionComponent } from './detail-mission/detail-mission.component';
+import { CandidatComponent } from './candidat/candidat.component';
+import { ModifierCandidatComponent } from './modifier-candidat/modifier-candidat.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -42,7 +44,10 @@ const routes: Routes = [
   { path: 'listeMissionDemander', component: ListeMissionDemanderComponent },
   { path: 'inscrire', component: InscrireComponent },
   {path:'notification',component:BannerNotificationComponent},
-  {path :'detailMission',component:DetailMissionComponent}
+  {path :'detailMission',component:DetailMissionComponent},
+  {path :'candidat',component:CandidatComponent},
+  { path: 'modifier-candidat/:id', component: ModifierCandidatComponent }
+
 
 
 

@@ -1,3 +1,8 @@
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+}
 export class Offre {
     id!: number;
     titre!: string;
@@ -7,13 +12,14 @@ export class Offre {
     lieu!: string;
     type_contrat!: string;
     date_debut!: Date;
-    client?: {
-      id: number;
-      nom: string;
-    };
-    // client?: Client; // Optionnel pour inclure les informations du client avec l'offre
+    client!: Client;
+}
 
-
+export interface Client {
+  id: number;
+  user_id: number;
+  adresse: string;
+  user: User;
 }
 
 // export interface Offre {

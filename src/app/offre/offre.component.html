@@ -21,7 +21,7 @@
                       <div>
                         <h5 class="mb-1">{{ offre.titre }}</h5>
                         <p class="mb-1">{{ offre.lieu }} ({{ offre.type_contrat }})</p>
-                        <small>Client: {{ offre.client?.nom }}</small>
+                        <small>Client: {{ offre.client.user.name }}</small>
                       </div>
                       <button class="btn btn-sm"  style="background-color:#085C78;color:#fff">Détails</button>
                     </li>

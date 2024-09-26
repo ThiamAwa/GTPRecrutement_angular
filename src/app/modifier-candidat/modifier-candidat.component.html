@@ -1,5 +1,7 @@
 <body>
 
+
+
   <!-- Topbar Start -->
   <div class="container-fluid topbar bg-light px-5 d-none d-lg-block">
     <div class="row gx-0 align-items-center">
@@ -12,10 +14,16 @@
         </div>
         <div class="col-lg-4 text-center text-lg-end">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-                <a href="#"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>Register</small></a>
-                <a href="#" [routerLink]="['/login']"><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Login</small></a>
+              <a  href="#" >
+                <small class="me-3 text-dark">
+                  <i class="fa fa-sign-out-alt text-primary me-2"></i>Déconnexion
+                </small>
+              </a>
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i> My Dashboard</small></a>
+                  <a [routerLink]="['/modifier-candidat']" class="dropdown-toggle text-dark">
+                    <small><i class="fa fa-home text-primary me-2"></i>Mettre à jour</small>
+                  </a>
+                          <!-- <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i> </small></a> -->
                     <div class="dropdown-menu rounded">
                         <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i> My Profile</a>
                         <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i> Inbox</a>
@@ -29,10 +37,10 @@
     </div>
 </div>
   <!-- Topbar End -->
-  <div  *ngIf="offre">
-    <!-- Navbar & Hero Start -->
-    <div class="position-relative p-0" >
-      <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+
+  <!-- Navbar & Hero Start -->
+  <div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
         <a href="" class="navbar-brand p-0">
             <h1 class="text-primary"><img src="assets/img/logo.png" alt="Logo"></h1>
             <!-- <img src="logo.png" alt="Logo"> -->
@@ -45,7 +53,7 @@
                 <a href="" [routerLink]="['/dashboard']" class="nav-item nav-link active">ACCUEIL</a>
                 <a href="about.html" class="nav-item nav-link">OFFRES</a>
                 <a href="service.html" class="nav-item nav-link">ENTREPRISES</a>
-                <a href="blog.html" class="nav-item nav-link">SERVICES</a>
+                <a href="blog.html" class="nav-item nav-link">BLOG</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link" data-bs-toggle="dropdown">
                         <span class="dropdown-toggle">SERVICES</span>
@@ -54,67 +62,50 @@
                         <a href="feature.html" class="dropdown-item">Recrutement IT</a>
                         <a href="team.html" class="dropdown-item">Missions de consulting</a>
                         <a href="testimonial.html" class="dropdown-item">Développement de projets IT sur mesure</a>
-                        <a href="offer.html" class="dropdown-item"> Recherche et Développement</a>
-                        <a href="FAQ.html" class="dropdown-item"> Formation et Renforcement des Compétences</a>
+                        <a href="offer.html" class="dropdown-item">Recherche et Développement</a>
+                        <a href="FAQ.html" class="dropdown-item">Formation et Renforcement des Compétences</a>
                         <a href="404.html" class="dropdown-item">Gestion de la Pénurie de Talents</a>
                     </div>
                 </div>
-                <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
             </div>
             <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0">Commencer</a>
         </div>
     </nav>
 
-        <!-- Header Start -->
-        <div class="container-fluid bg-breadcrumb">
-          <div class="container text-center py-5" style="max-width: 900px;">
-              <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">{{ offre.titre  }}</h4>
-              <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0" [routerLink]="['/postuler', offre.id]">Postuler</a>
+    <!-- En-tête Début -->
+    <div class="container-fluid login">
+        <div class="container text-center py-5" style="max-width: 900px;">
+            <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s" style="margin-top: 50px;">Mettre à jour profil</h4>
 
+            <form (ngSubmit)="onSubmit()" *ngIf="candidat">
+              <div class="form-group">
+                <label for="nom">Nom</label>
+                <input type="text" id="nom" [(ngModel)]="candidat.nom" name="nom" class="form-control" required>
+              </div>
 
-          </div>
-      </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" [(ngModel)]="candidat.email" name="email" class="form-control" required>
+              </div>
 
-        <!-- Header End -->
-    </div>
-    <!-- Navbar & Hero End -->
+              <div class="form-group">
+                <label for="telephone">Téléphone</label>
+                <input type="text" id="telephone" [(ngModel)]="candidat.telephone" name="telephone" class="form-control" required>
+              </div>
 
-    <div class="container-fluid about py-5"style="color:#000 ;">
-        <div class="container py-5">
-            <div class="row g-5 align-items-center">
-                <div class="col-xl-7 wow fadeInLeft" data-wow-delay="0.2s">
-                  <div *ngIf="offre">
-                    <h1 class="text-center">Vos mission</h1>
-                    <p>{{ offre.description }}</p>
-                    <h1 class="text-center">Votre profil</h1>
-                    <p> {{ offre.competences}}</p>
-                    <p><strong>Lieu:</strong> {{ offre.lieu }}</p>
-                    <p><strong>Expérience:</strong> {{ offre.experience }} ans</p>
-                    <p><strong>Type de contrat:</strong> {{ offre.type_contrat }}</p>
+              <!-- Ajoute d'autres champs selon les informations à modifier -->
 
-                  </div>
-
-                  <div *ngIf="!offre">
-                    <p>Chargement des détails de l'offre...</p>
-                  </div>
-
-                </div>
-
-            </div>
-            <a href="#" class="btn btn-primary rounded-pill py-2 px-4 my-3 my-lg-0 flex-shrink-0" [routerLink]="['/postuler', offre.id]">Postuler</a>
+              <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            </form>
 
         </div>
     </div>
+    <!-- En-tête Fin -->
+</div>
 
-  </div>
+  <!-- Navbar & Hero End -->
 
 
 </body>
-
-
-
-
-
-
-
 

@@ -22870,11 +22870,11 @@ dl li {
       font-family: Arial, sans-serif;
       background-color: #f4f4f4;
     }
-    
+
     /* Navbar Styling */
-    
+
     /* Sidebar Styling */
-   
+
     /* Table Styling */
     .table th, .table td {
       vertical-align: middle;
@@ -22900,12 +22900,12 @@ dl li {
       border-color: #ffc107;
       color: white;
     }
-    
+
     .btn-warning:hover {
       background-color: #e0a800;
       border-color: #d39e00;
     }
-    
+
     /* Card Styling */
     .card {
       box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -22920,4 +22920,46 @@ dl li {
     .btn-sm {
       padding: 5px 10px;
       border-radius: 4px;
+    }
+
+    .feedback-question {
+      margin-bottom: 30px; /* Augmenter l'espacement entre les questions */
+    }
+
+    .feedback-question h6 {
+      font-weight: bold;
+      margin-bottom: 15px; /* Augmenter l'espacement en dessous du titre */
+      font-size: 1.25rem; /* Augmenter la taille de la police du titre */
+    }
+
+    .rating label {
+      margin-right: 20px; /* Espacement entre les options de notation */
+      font-size: 1.1rem; /* Augmenter la taille de la police des options */
+    }
+
+    textarea.form-control {
+      font-size: 1rem; /* Augmenter la taille de la police dans le textarea */
+      padding: 10px; /* Augmenter le remplissage du textarea */
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: space-between; /* Espacement entre les boutons */
+    }
+
+    .btn-primary {
+      padding: 10px 20px; /* Augmenter le remplissage du bouton */
+      font-size: 1rem; /* Augmenter la taille de la police du bouton */
+    }
+
+    .btn-secondary {
+      background-color: #6c757d; /* Couleur de fond grise */
+      color: white; /* Couleur du texte */
+      padding: 10px 20px; /* Augmenter le remplissage du bouton annuler */
+      font-size: 1rem; /* Augmenter la taille de la police du bouton */
+    }
+
+    /* Animation de transition pour le modal */
+    .modal.fade .modal-dialog {
+      transition: transform .3s ease-out;
     }

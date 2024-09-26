@@ -32,6 +32,8 @@ import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { NotificationBottomSheetComponent } from './notification-bottom-sheet/notification-bottom-sheet.component';
 import { DetailMissionComponent } from './detail-mission/detail-mission.component';
+import { CandidatComponent } from './candidat/candidat.component';
+import { ModifierCandidatComponent } from './modifier-candidat/modifier-candidat.component';
 
 
 
@@ -63,6 +65,8 @@ import { DetailMissionComponent } from './detail-mission/detail-mission.componen
     BannerNotificationComponent,
          NotificationBottomSheetComponent,
          DetailMissionComponent,
+         CandidatComponent,
+         ModifierCandidatComponent,
 
   ],
   imports: [

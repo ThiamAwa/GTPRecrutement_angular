@@ -101,4 +101,15 @@ export class AuthServiceService {
       password_confirmation: userData.confirmPassword
     });
   }
+
+  getCandidatId(): number {
+    // Si l'ID du candidat est stocké localement après la connexion
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
+    return user?.id || null;
+  }
+
+  getUser(): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`);
+    return this.http.get(`${this.apiUrl2}/me`, { headers });
+  }
 }

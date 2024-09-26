@@ -4,6 +4,7 @@ import { MissionServiceService } from '../service/mission-service.service';
 import { ClientServiceService } from '../service/client-service.service';
 import { ConsultantServiceService } from '../service/consultant-service.service';
 import { Mission } from '../model/mission';
+import { OffreServiceService } from '../service/offre-service.service';
 
 @Component({
   selector: 'app-missions',
@@ -16,11 +17,15 @@ export class MissionComponent implements OnInit {
   missions: any[] = [];
   clients: any[] = [];
   consultants: any[] = [];
+  publicationSuccess: boolean = false; 
+  isLoading: boolean = false;
+  offerPublished: { [key: number]: boolean } = {};
 
   constructor(
     private missionService: MissionServiceService,
     private clientService: ClientServiceService,
-    private consultantService: ConsultantServiceService
+    private consultantService: ConsultantServiceService,
+    private offreService: OffreServiceService
   ) {}
 
   ngOnInit(): void {
@@ -82,6 +87,23 @@ updateMissionStatus(missionId: number, newStatus: string): void {
       alert(`Erreur lors de la mise à jour du statut: ${error.error.message}`);
     }
   });
+}
+
+publier(missionId: number) {
+  this.isLoading = true;
+  this.offreService.publierOffre(missionId).subscribe(
+    response => {
+      // Gérer la réponse ici
+      console.log(response);
+      this.publicationSuccess = true;
+      this.offerPublished[missionId] = true;
+      // Optionnel : mettre à jour la liste des missions ou afficher un message de succès
+    },
+    error => {
+      // Gérer les erreurs ici
+      console.error('Erreur lors de la publication de l\'offre', error);
+    }
+  );
 }
 
 }

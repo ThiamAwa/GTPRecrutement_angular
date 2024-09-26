@@ -34,8 +34,10 @@ export class AuthComponent {
             this.router.navigate(['/manager']);
           } else if (role === 2) {
             this.router.navigate(['/client']);
-          } else {
+          } else if (role==3){
             this.router.navigate(['/consultant']);
+          }else if (role==4) {
+            this.router.navigate(['/candidat']);
           }
 
           // Réinitialiser le formulaire

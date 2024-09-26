@@ -194,11 +194,17 @@
                         <!-- Experience Level Field -->
                         <div class="form-group col-md-6">
                           <label for="niveau_experience">Niveau d'expérience</label>
-                          <input type="text" formControlName="niveau_experience" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['niveau_experience'].errors}" />
+                          <select formControlName="niveau_experience" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['niveau_experience'].errors}">
+                            <option value="">Sélectionner un niveau d'expérience</option>
+                            <option value="debutant">Débutant</option>
+                            <option value="intermediaire">Intermédiaire</option>
+                            <option value="avance">Avancé</option>
+                          </select>
                           <div *ngIf="submitted && f['niveau_experience'].errors" class="invalid-feedback">
                             <div *ngIf="f['niveau_experience'].errors?.['required']">Le niveau d'expérience est requis.</div>
                           </div>
                         </div>
+
                         <div class="form-group col-md-6">
                           <label for="objectifs">Objectifs</label>
                           <textarea formControlName="objectifs" class="form-control input-border" [ngClass]="{'is-invalid': submitted && f['objectifs'].errors}"></textarea>

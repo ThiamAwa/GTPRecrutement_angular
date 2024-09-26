@@ -9,7 +9,9 @@ import { AuthServiceService } from './auth-service.service';
 })
 export class MissionServiceService {
   private apiUrl = 'http://localhost:8000/api/missions';
-  private apiUrl2 = 'http://localhost:8000/api/missions/sans-consultant';
+  private apiUrl2 = 'http://localhost:8000/api/mission';
+  private baseUrl = 'http://localhost:8000/api';
+  private apiUrl3='http://localhost:8000/api/missionsOngoing';
 
   private clientId: number = 2;
 
@@ -37,6 +39,10 @@ export class MissionServiceService {
     return this.http.delete<any>(`${this.apiUrl}/${id}`).pipe(catchError(this.handleError));
   }
 
+  getMissionById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${id}`);
+  }
+
   // Met à jour l'état d'une mission
   updateMissionStatus(id: number, status: string): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}/status`, { status }).pipe(catchError(this.handleError));
@@ -44,7 +50,7 @@ export class MissionServiceService {
 
   // Récupère toutes les missions en cours
   getOngoingMissions(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/ongoing`).pipe(catchError(this.handleError));
+    return this.http.get<any[]>(this.apiUrl3).pipe(catchError(this.handleError));
   }
 
   // Récupère les détails d'une mission spécifique
@@ -88,18 +94,54 @@ export class MissionServiceService {
     return throwError(() => new Error('Une erreur est survenue. Veuillez réessayer plus tard.'));
   }
 
-  // Récupère les missions sans consultant
-  getMissionsSansConsultant(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl2).pipe(
-      catchError(error => {
-        console.error('Erreur lors de la récupération des missions sans consultant:', error);
-        return throwError(() => new Error('Une erreur est survenue. Veuillez réessayer plus tard.'));
-      })
-    );
-  }
+
+
 
   // Assigner un consultant à une mission
-  assignConsultantToMission(data: { consultantId: number; missionId: number }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/assign`, data).pipe(catchError(this.handleError));
+
+
+  assignMission(missionId: number, consultantId: number,clientId:number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/missions/${missionId}/assign-consultant`, { consultant_id: consultantId,mission_id:missionId,client_id:clientId});
   }
+
+  // Envoi d'email au consultant
+  sendEmailToConsultant(consultantId: number, missionId: number, clientId: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/send-email-to-consultant`, { consultant_id: consultantId,mission_id: missionId,client_id: clientId });
+  }
+
+  getMissionsSansConsultant(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl2);
+  }
+
+  checkAndUpdateMissionStatus(): Observable<any> {
+    return this.http.post(`${this.baseUrl}/missions/update-status`, {});
+  }
+
+//   getMissionDetailsMissionEncours(id: number): Observable<any> {
+//     return this.http.get(`${this.baseUrl}/missions/showClientMissionEncours/${id}`).pipe(
+//       catchError(this.handleError)
+//     );
+// }
+
+getMissionDetailsMissionEncours(clientId: number, missionId: number): Observable<any> {
+  return this.http.get(`${this.baseUrl}/missions/showClientMissionEncours/${clientId}/${missionId}`).pipe(
+      catchError(this.handleError)
+  );
+}
+
+
+
+
+  // mission-service.service.ts
+getTermineMissions(): Observable<any[]> {
+  return this.http.get<any[]>('http://localhost:8000/api/missionsterminer');
+}
+
+//valider la mission
+validerMission(missionId: number) {
+  return this.http.post(`http://localhost:8000/api/missions/valider/${missionId}`, {});
+}
+
+
+
 }

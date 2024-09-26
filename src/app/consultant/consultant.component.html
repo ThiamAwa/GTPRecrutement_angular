@@ -134,27 +134,27 @@
                   <div class="mb-4">
                     <div class="row">
                       <!-- Competence Filter -->
-                      <div class="col-md-3 mb-3">
+                      <!-- <div class="col-md-3 mb-3">
                         <label for="competences" class="form-label">Compétence</label>
                         <input id="competences" type="text" class="form-control" [(ngModel)]="filters.competences" (ngModelChange)="onFilterChange()"placeholder="Filtrer par compétence">
-                      </div>
+                      </div> -->
 
                       <!-- Experience Filter -->
-                      <div class="col-md-3 mb-3">
+                      <!-- <div class="col-md-3 mb-3">
                         <label for="experienceFilter" class="form-label">Niveau d'expérience</label>
                         <input id="experienceFilter" type="text" class="form-control" [(ngModel)]="filters.experiences" (ngModelChange)="onFilterChange()" placeholder="Filtrer par expérience (années)">
-                      </div>
+                      </div> -->
 
                       <!-- Disponibilité Filter -->
-                      <div class="col-md-3 mb-3">
+                      <!-- <div class="col-md-3 mb-3">
                         <label for="disponibilite" class="form-label">Disponibilité</label>
                         <input id="disponibilite" type="date" class="form-control" [(ngModel)]="filters.date_disponibilite" (ngModelChange)="onFilterChange()" placeholder="Filtrer par disponibilité">
-                      </div>
+                      </div> -->
 
                       <!-- Bouton Filtrer -->
-                      <div class="col-md-3 mb-3 align-self-end">
+                      <!-- <div class="col-md-3 mb-3 align-self-end">
                         <button class="btn" style="background-color: #085C78;color:aliceblue" (click)="getFilteredConsultant()">Filtrer</button>
-                      </div>
+                      </div> -->
                     </div>
 
                   </div>
@@ -200,7 +200,7 @@
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title">Attribuer une mission au Consultant ID: {{ selectedConsultantId }}</h5>
+                          <h5 class="modal-title">Attribuer une mission au Consultant : {{ getConsultantName(selectedConsultantId) }}</h5>
                           <button type="button" style="background-color: #ffc107;" class="close" (click)="closeModal()">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -215,7 +215,12 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr *ngFor="let mission of missionList">
+                              <!-- <tr *ngFor="let mission of missionList" (click)="selectedConsultantId ? onSelectMission(mission, selectedConsultantId) : null"> -->
+                                <tr *ngFor="let mission of missionList"
+    (click)="selectedConsultantId ? onSelectMission(mission, selectedConsultantId) : null"
+    [ngClass]="{'clickable-row': true}"
+    style="cursor: pointer;">
+
                                 <td>
                                   <input type="radio" name="mission" [value]="mission.id" [(ngModel)]="selectedMission">
                                 </td>
@@ -228,17 +233,30 @@
                           </table>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" (click)="closeModal()">Fermer</button>
-                          <button type="button" class="btn btn-primary" >Attribuer</button>
+
                         </div>
                       </div>
                     </div>
                   </div>
+                  <div class="modal" [ngClass]="{'show': isConfirmationModalOpen}" tabindex="-1" role="dialog" [style.display]="isConfirmationModalOpen ? 'block' : 'none'">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Confirmation</h5>
+                          <button type="button" class="close" (click)="closeConfirmationModal()">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                          <!-- <p>Voulez-vous attribuer la mission "<strong>{{ getMissionTitle(selectedMission) }}</strong>" à <strong>{{ getConsultantName(selectedConsultantId) }}</strong> ?</p> -->
 
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" (click)="closeConfirmationModal()">Annuler</button>
+                          <button type="button" class="btn btn-sm" style="background-color: #ffc107; color: aliceblue" (click)="assignMission()">Confirmer</button>
 
-
-
-
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 

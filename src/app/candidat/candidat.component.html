@@ -33,10 +33,16 @@
               </div>
               <div class="col-lg-4 text-center text-lg-end">
                   <div class="d-inline-flex align-items-center" style="height: 45px;">
-                      <a href="#"  [routerLink]="['/inscrire']"><small class="me-3 text-dark"><i class="fa fa-user text-primary me-2"></i>S'inscrire</small></a>
-                      <a [routerLink]="['/login']" href=""><small class="me-3 text-dark"><i class="fa fa-sign-in-alt text-primary me-2"></i>Connexion</small></a>
+                    <a  href="#" >
+                      <small class="me-3 text-dark">
+                        <i class="fa fa-sign-out-alt text-primary me-2"></i>Déconnexion
+                      </small>
+                    </a>
                       <div class="dropdown">
-                          <a href="#" class="dropdown-toggle text-dark" data-bs-toggle="dropdown"><small><i class="fa fa-home text-primary me-2"></i>Mon Tableau de Bord</small></a>
+                        <a [routerLink]="['/modifier-candidat', candidatId]" class="dropdown-toggle text-dark">
+                          <small><i class="fa fa-home text-primary me-2"></i>Modifier profil</small>
+                        </a>
+
                           <div class="dropdown-menu rounded">
                               <a href="#" class="dropdown-item"><i class="fas fa-user-alt me-2"></i>Mon Profil</a>
                               <a href="#" class="dropdown-item"><i class="fas fa-comment-alt me-2"></i>Boîte de Réception</a>
@@ -101,6 +107,98 @@
               </div>
           </div> <!-- end of container -->
       </section>
+
+
+
+        <!-- Offres Start -->
+        <div class="container-fluid service pb-5">
+          <div class="container pb-5">
+            <!-- Header Section -->
+            <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+              <!-- <h4 class="text-primary mt-3">Offres</h4> -->
+              <h1 class="display-5 mb-4">Offres </h1>
+              <p class="mb-0 text-primary">
+                Êtes-vous prêt à appliquer vos connaissances et votre expérience à de nouveaux défis passionnants ?
+                De l'apprentissage au leadership, boostez votre carrière. Recherchez et postulez à un emploi dès aujourd'hui.
+              </p>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="mb-4">
+              <div class="row">
+                <!-- Lieu Filter -->
+                <div class="col-md-3 mb-3">
+                  <label for="lieuFilter" class="form-label">Lieu</label>
+                  <input id="lieuFilter" type="text" class="form-control" [(ngModel)]="filters.lieu" (ngModelChange)="onFilterChange()" placeholder="Filtrer par lieu">
+                </div>
+
+                <!-- Experience Filter -->
+                <div class="col-md-3 mb-3">
+                  <label for="experienceFilter" class="form-label">Niveau d'expérience</label>
+                  <input id="experienceFilter" type="number" class="form-control" [(ngModel)]="filters.experience" (ngModelChange)="onFilterChange()" placeholder="Filtrer par expérience (années)">
+                </div>
+
+
+                <!-- Type de Contrat Filter -->
+                <div class="col-md-3 mb-3">
+                  <label for="typeContratFilter" class="form-label">Type de Contrat</label>
+                  <select id="typeContratFilter" class="form-select" [(ngModel)]="filters.type_contrat" (ngModelChange)="onFilterChange()">
+                    <option value="">Tous les types</option>
+                    <option value="CDI">CDI</option>
+                    <option value="CDD">CDD</option>
+                    <option value="Stage">Stage</option>
+                  </select>
+                </div>
+
+
+
+              </div>
+            </div>
+
+            <!-- Offers Table Section -->
+            <div class="mt-5">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Lieu</th>
+                    <th scope="col">Niveau d'expérience</th>
+                    <th scope="col">Type de Contrat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Display filtered offers -->
+                  <tr *ngFor="let offre of tabOffre" (click)="onSelectOffre(offre)">
+                    <td>{{ offre.titre }}</td>
+                    <td>{{ offre.lieu }}</td>
+                    <td>{{ offre.experience }} ans</td>
+                    <td>{{ offre.type_contrat }}</td>
+                  </tr>
+                  <!-- No offers found message -->
+                  <tr *ngIf="tabOffre.length === 0">
+                    <td colspan="4" class="text-center">Aucune offre disponible pour le moment.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Offres End -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

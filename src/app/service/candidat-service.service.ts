@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams ,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Candidat } from '../model/candidat';
 
@@ -16,9 +16,15 @@ export class CandidatServiceService {
     return this.httpClient.get<Candidat[]>(this.apiUrl);
   }
 
-  createCandidat(candidat: any): Observable<any> {
-    return this.httpClient.post<any>(this.apiUrl, candidat);
+  // createCandidat(candidat: any): Observable<any> {
+  //   return this.httpClient.post<any>(this.apiUrl, candidat);
+  // }
+
+  createCandidat(candidat: FormData, options?: { headers?: HttpHeaders }): Observable<any> {
+    return this.httpClient.post<any>(this.apiUrl, candidat, options);
   }
+
+
 
   getFilterCandidat(filters: any): Observable<Candidat[]> {
     let params = new HttpParams();
@@ -38,5 +44,13 @@ export class CandidatServiceService {
 
   deleteCandidat(candidatId: number): Observable<any> {
     return this.httpClient.delete(`${this.apiUrl}/${candidatId}`);
+  }
+
+  getCandidat(id: number): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/candidats/${id}`);
+  }
+
+  updateCandidat(id: number, data: any): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/${id}`, data);
   }
 }

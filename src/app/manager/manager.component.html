@@ -95,7 +95,7 @@
                   <p><strong>Date de fin:</strong> {{ selectedMission.date_fin | date }}</p>
                   <p><strong>Type de profil recherché:</strong> {{ selectedMission.type_profil_recherche }}</p>
                   <p><strong>Compétences requises:</strong> {{ selectedMission.competences_requises }}</p>
-                  <p><strong>Durée:</strong> {{ selectedMission.duree }}</p>
+                  <!-- <p><strong>Durée:</strong> {{ selectedMission.duree }}</p> -->
                   <p><strong>Objectifs:</strong> {{ selectedMission.objectifs }}</p>
                   <p><strong>Client:</strong> {{ selectedMission.client?.name }}</p>
                 </div>
@@ -191,7 +191,7 @@
             <div class="card-body">
               <h4 class="card-title text-center">Liste des Candidats</h4>
               <!-- <h4 class="card-title text-center">Liste des Consultants</h4> -->
-
+              <button class="btn btn-warning mb-3" [routerLink]="['/soumettreBesion']">Creer un Profil</button>
               <div class="filter-section mb-4">
                 <form (ngSubmit)="onFilter()">
                   <div class="row">
@@ -214,12 +214,11 @@
                     <tr>
                       <th>ID</th>
                       <th>Nom</th>
-                      <th>Prénom</th>
                       <th>Email</th>
                       <th>Compétences</th>
                       <th>Expérience (années)</th>
                       <th>CV</th>
-                      <!-- <th>Lettre de Motivation</th> -->
+                      <th>Lettre de Motivation</th>
                       <!-- <th>Status</th> -->
                       <th>Actions</th>
                     </tr>
@@ -227,9 +226,8 @@
                   <tbody>
                     <tr *ngFor="let candidat of tabCandidat">
                       <td>{{ candidat.id }}</td>
-                      <td>{{ candidat.nom }}</td>
-                      <td>{{ candidat.prenom }}</td>
-                      <td>{{ candidat.email }}</td>
+                      <td>{{ candidat.user.name }}</td>
+                      <td>{{ candidat.user.email }}</td>
                       <td>
                         <div class="single-line">{{ candidat.competences }}</div>
                       </td>
@@ -237,9 +235,9 @@
                       <td>
                         <a [href]="candidat.cv" target="_blank" class="nav-link">Voir CV</a>
                       </td>
-                      <!-- <td>
+                      <td>
                         <a [href]="candidat.lm" target="_blank" class="nav-link">Voir Lettre</a>
-                      </td> -->
+                      </td>
                       <!-- <td>{{ candidat.status }}</td> -->
                       <td>
                         <button *ngIf="candidat.status !== 'Accepté' && candidat.status !== 'Refusé'"
